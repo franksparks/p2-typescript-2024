@@ -1,4 +1,5 @@
 import { Book } from "./books.js";
+import { writeFile } from "fs/promises";
 
 const head = (title: string) => `
     <head>
@@ -15,10 +16,11 @@ const head = (title: string) => `
             flex-direction: row;
             align-items: center;
             margin: 1em;
+            cursor:pointer
+
         }
         .bookCover{
             width: 5rem;
-            cursor:pointer
         }
         .bookInfo{
             margin: 1em
@@ -40,10 +42,21 @@ function renderBooks(books: Array<Book>) {
             <h2>${
               book.author_name ? book.author_name : "Autor no especificado"
             }</h2>
+            <a href="/books/${book.edition_key}.html" 
+            onclick="${renderBook(book.edition_key)}"
+            >Más información</a>
         </div>
+        
   </div>`;
   }
   return html;
+}
+
+async function renderBook(key: string) {
+  const html = ` <p>Test page</p>          `;
+
+  const filename = "./books/" + key + ".html";
+  await writeFile(filename, html);
 }
 
 export const render = (books: Array<Book>) => {
