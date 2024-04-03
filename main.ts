@@ -1,8 +1,6 @@
-import { writeFile } from "fs/promises";
-import { render } from "./render.js";
-import { loadUsers } from "./users.js";
+import { loadBooks } from "./books.js";
 
-const users = await loadUsers(100);
-const html = render(users);
-await writeFile('users.html', html);
+const books = await loadBooks(100);
 
+console.log("My books");
+console.log(books);
