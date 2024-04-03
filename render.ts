@@ -1,5 +1,6 @@
 import { Book } from "./books.js";
 import { writeFile } from "fs/promises";
+import fs from "fs";
 
 const head = (title: string) => `
     <head>
@@ -28,6 +29,13 @@ const head = (title: string) => `
         </style>
     </head>`;
 
+const bookFolder = "./books";
+function createFolder(bookFolder: string) {
+  if (!fs.existsSync(bookFolder)) {
+    fs.mkdirSync(bookFolder);
+  }
+}
+
 function renderBooks(books: Array<Book>) {
   let html = "";
   for (let i = 0; i < books.length; i++) {
@@ -53,9 +61,11 @@ function renderBooks(books: Array<Book>) {
 }
 
 async function renderBook(key: string) {
+  createFolder(bookFolder);
   const html = ` <p>Test page</p>          `;
 
-  const filename = "./books/" + key + ".html";
+  const filename = bookFolder + key + ".html";
+
   await writeFile(filename, html);
 }
 
