@@ -10,7 +10,18 @@ const head = (title: string) => `
         .book{
             outline: black 1px solid;
             margin: 1em;
-            padding: 0.5em
+            padding: 0.5em;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 1em;
+        }
+        .bookCover{
+            width: 5rem;
+            cursor:pointer
+        }
+        .bookInfo{
+            margin: 1em
         }
         </style>
     </head>`;
@@ -21,13 +32,14 @@ function renderBooks(books: Array<Book>) {
     const book = books[i];
     html += `
     <div class="book">
-    
-        <div class="bookCover"></div>
+        <img class ="bookCover" src="${
+          book.cover_i ? book.cover_i : "Portada no disponible"
+        }" />
         <div class="bookInfo">
-            <h2>${i + 1}. ${book.title}</h2>
-            <h3>${
+            <h1>${i + 1}. ${book.title}</h1>
+            <h2>${
               book.author_name ? book.author_name : "Autor no especificado"
-            }</h3>
+            }</h2>
         </div>
   </div>`;
   }
@@ -39,7 +51,7 @@ export const render = (books: Array<Book>) => {
     <html>
       ${head("Books List")}
       <body>
-      <p>${renderBooks(books)}</p>
+        <p>${renderBooks(books)}</p>
       </body>
     </html>`;
 };

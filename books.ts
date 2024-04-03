@@ -1,13 +1,11 @@
 export class Book {
   constructor(
     public author_name: string, //23
-    public cover_edition_key: string, //38
     public cover_i: string, //39
     public edition_count: number, //43
     public first_publish_year: number, //151
     public first_sentence: string, //152
     public key: string, //410
-    public lending_identifier_s: number, //451
     public number_of_pages_median: number, //452
     public title: "string", //855
     public ratings_average: number //1167
@@ -27,13 +25,11 @@ export const loadBooks = async (n: number) => {
   let bookCounter = 0;
   for (const {
     author_name,
-    cover_edition_key,
     cover_i,
     edition_count,
     first_publish_year,
     first_sentence,
     key,
-    lending_identifier_s,
     number_of_pages_median,
     title,
     ratings_average,
@@ -44,20 +40,18 @@ export const loadBooks = async (n: number) => {
       ? first_sentence[0]
       : first_sentence;
 
-    //Eliminamos "isbn_" del inicio del id
-    const id = lending_identifier_s?.startsWith("isbn_")
-      ? lending_identifier_s.substring(5)
-      : lending_identifier_s;
+    //Construimos la URL donde obtendremos la portada del libro
+    const cover_url =
+      "https://covers.openlibrary.org/b/id/" + cover_i + "-L.jpg";
+
     books.push(
       new Book(
         author,
-        cover_edition_key,
-        cover_i,
+        cover_url,
         edition_count,
         first_publish_year,
         first,
         key,
-        id,
         number_of_pages_median,
         title,
         ratings_average
