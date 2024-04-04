@@ -98,11 +98,11 @@ async function renderBook(book: Book) {
                   book.cover_i ? book.cover_i : "Portada no disponible"
                 }" />
                 <div class="bookInfo">
-                <p><span class="bold">Autor:</span> ${
-                  book.author_name ? book.author_name : "Autor no especificado"
-                }</p>
                 <p><span class="bold">Título:</span> ${
                   book.title ? book.title : "Título no disponible."
+                }</p>
+                <p><span class="bold">Autor:</span> ${
+                  book.author_name ? book.author_name : "Autor no especificado"
                 }</p>
                 <p><span class="bold">Año de publicación:</span> ${
                   book.first_publish_year

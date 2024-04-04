@@ -10,7 +10,23 @@
 
 ### Notas
 
-Lorem Ipsum
+La API que uso para obtener información de libros es la de [Open Library](https://openlibrary.org/developers/api).
+
+Al arrancar la aplicación, se muestran los primeros 100 libros devueltos al utilizar "ciencia ficción" como criterio de búsqueda.
+
+En la página principal se muestra la imagen de portada (si esta está disponible), número de entrada en la lista, título del libro y autor.
+
+En la página con los detalles de cada libro mostramos los siguientes campos, si están disponibles:
+
+1. Portada
+2. Título
+3. Autor
+4. Año de publicación
+5. Número medio de páginas
+6. Valoración media por los usuarios de la plataforma
+7. Primera frase del libro
+
+Además de un botón para volver a la lista de libros.
 
 ---
 
