@@ -8,15 +8,19 @@
 
 **Perfil de GitHub:** [franksparks](https://github.com/franksparks)
 
-### Notas
+### API
 
 La API que uso para obtener información de libros es la de [Open Library](https://openlibrary.org/developers/api).
 
-Al arrancar la aplicación, se muestran los primeros 100 libros devueltos al utilizar "Philip K. Dick" como criterio de búsqueda.
+### Arrancar la aplicación
 
-En la página principal se muestra la imagen de portada (si no está disponible se muestra una imagen por defecto), número de entrada en la lista, título del libro y autor.
+Una vez abrimos el repositorio en Visual Studio Code, lanzamos ```bun main.ts```, que lanza la petición a la API usando "Philip K. Dick" como criterio de búsqueda y genera las páginas HTML de los 100 primeros resultados. Ahora abrimos el archivo ```books.html``` con Live Server.
 
-También se ha añadido un botón para volver al inicio de la página.
+### Descripción del contenido
+
+En la página principal, para cada libro se muestra la imagen de portada (si no está disponible se muestra una imagen por defecto), el número de entrada en la lista, el título del libro y el nombre del autor.
+
+Se ha añadido un botón para volver al inicio de la página.
 
 En la página con los detalles de cada libro mostramos los siguientes campos:
 
