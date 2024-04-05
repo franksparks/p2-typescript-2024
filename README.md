@@ -12,11 +12,13 @@
 
 La API que uso para obtener información de libros es la de [Open Library](https://openlibrary.org/developers/api).
 
-Al arrancar la aplicación, se muestran los primeros 100 libros devueltos al utilizar "ciencia ficción" como criterio de búsqueda.
+Al arrancar la aplicación, se muestran los primeros 100 libros devueltos al utilizar "Philip K. Dick" como criterio de búsqueda.
 
-En la página principal se muestra la imagen de portada (si esta está disponible), número de entrada en la lista, título del libro y autor.
+En la página principal se muestra la imagen de portada (si no está disponible se muestra una imagen por defecto), número de entrada en la lista, título del libro y autor.
 
-En la página con los detalles de cada libro mostramos los siguientes campos, si están disponibles:
+También se ha añadido un botón para volver al inicio de la página.
+
+En la página con los detalles de cada libro mostramos los siguientes campos:
 
 1. Portada
 2. Título
@@ -25,6 +27,8 @@ En la página con los detalles de cada libro mostramos los siguientes campos, si
 5. Número medio de páginas
 6. Valoración media por los usuarios de la plataforma
 7. Primera frase del libro
+8. Enlace al perfil del autor en Open Library
+9. Enlace al perfil del libro en Open Library
 
 Además de un botón para volver a la lista de libros.
 
