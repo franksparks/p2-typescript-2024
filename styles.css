@@ -70,3 +70,21 @@ button:hover {
 .record {
   font-size: 1em;
 }
+footer {
+  font-size: 1.5em;
+  outline: 2px black solid;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  padding: 0.5em;
+  position: fixed;
+  bottom: 0.5em;
+}
+
+footer:hover {
+  cursor: pointer;
+  background-color: #d3d3d3;
+  box-shadow: 0.75em 1.5em;
+}

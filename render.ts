@@ -47,6 +47,12 @@ function renderBooks(books: Array<Book>) {
       </div>
     </a>`;
   }
+  html += `
+  <a href="https://github.com/franksparks" target="”_blank”">
+    <footer>
+      ©Ferran Bals Moreno 2024
+    </footer>
+  </a>`;
   return html;
 }
 
@@ -54,6 +60,7 @@ async function renderBook(book: Book) {
   const html = ` 
     <html>
         ${generateHead(book.title)}
+        <main>
         <body>
         <h1>Libros de la API de Open Library</h1>
         <h2>Detalles del libro seleccionado</h2>
@@ -105,7 +112,18 @@ async function renderBook(book: Book) {
         <a href="/books.html">
           <button>&#8592; Volver a la lista</button>
         </a
-          
+        </main>
+
+        <a href="https://github.com/franksparks" target="”_blank”">
+          <footer>
+        ©
+        
+          Ferran Bals Moreno
+        2024
+      </footer>
+      </a
+        >
+ 
       </body>
     </html>`;
 
