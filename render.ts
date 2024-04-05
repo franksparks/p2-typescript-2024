@@ -13,64 +13,8 @@ function generateHead(title: string) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
         <title>${title}</title>
-        
-        <style>
-          body{
-            background-color: #6495ED;
-            font-family: "Special Elite", system-ui;
-          }
-          a,
-          a:visited,
-          a:hover,
-          a:active {
-            text-decoration: none;
-            user-select: none;
-            cursor:pointer;
-            color: black;
-          }
-          .book{
-            background-color: white;
-            outline: black 1px solid;
-            margin: 2em auto;
-            padding: 0.5em;
-            width: 80em;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content:center;
-          }
-          .record{
+        <link rel="stylesheet" href="../styles.css" />
 
-          }
-          .bookCoverMini{
-            width: 5rem;
-          }
-          .bookCoverDetails{
-            width: 10rem;
-          }
-          .bookPreview{
-            margin: 1em
-          }
-          .bookInfo{
-            margin: 1em
-          }
-          .hover:hover{
-            background-color: #D3D3D3;
-            box-shadow: 0.75em 1.5em;
-          }
-          .bold{
-            font-weight: bold;
-          }
-          .under{
-            text-decoration: underline;
-          }
-          .italic{
-            font-style: italic;
-          }
-          h1, h2, .bookInfo h3{
-            font-weight: normal;
-          }
-        </style>
     </head>`;
 }
 
