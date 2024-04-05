@@ -22,13 +22,11 @@ a:active {
   align-items: center;
   justify-content: center;
 }
-.record {
-}
 .bookCoverMini {
   width: 5rem;
 }
 .bookCoverDetails {
-  width: 10rem;
+  width: 15rem;
 }
 .bookPreview {
   margin: 1em;
@@ -53,4 +51,22 @@ h1,
 h2,
 .bookInfo h3 {
   font-weight: normal;
+}
+button {
+  font-size: 2em;
+  cursor: pointer;
+  background-color: white;
+  font-family: "Special Elite", system-ui;
+}
+button:hover {
+  background-color: #d3d3d3;
+  box-shadow: 0.5em 0.5em;
+}
+.upButton {
+  position: fixed;
+  top: 25em;
+  margin-left: 1em;
+}
+.record {
+  font-size: 1em;
 }

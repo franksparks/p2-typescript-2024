@@ -27,7 +27,8 @@ function createFolder(bookFolder: string) {
 
 function renderBooks(books: Array<Book>) {
   createFolder(bookFolder);
-  let html = "";
+  let html =
+    "<a href='#body'><button class='upButton'>&#8593;Volver arriba</button></a>";
   for (let i = 0; i < books.length; i++) {
     const book = books[i];
     renderBook(book);
@@ -56,7 +57,7 @@ async function renderBook(book: Book) {
         <body>
         <h1>Libros de la API de Open Library</h1>
         <h2>Detalles del libro seleccionado</h2>
-        <div class="book record">
+        <div class="book">
           <img class ="bookCoverDetails" src="${
             book.cover_i ? book.cover_i : "Portada no disponible"
           }" />
@@ -87,11 +88,24 @@ async function renderBook(book: Book) {
                 ? book.first_sentence
                 : "Información no disponible."
             }</span></h3>
+            <h4>
+              <a target="_blank" href="${
+                book.author_profile
+              }"><button class="record">Perfil del autor en Open Library</button></a>
+            </h4>
+            <h4>
+              <a target="_blank" href="${
+                book.book_profile
+              }"><button class="record">Perfil del libro en Open Library</button>
+              </a>
+            </h4>
           </div>
         </div>
-        <div>
-          <a href="/books.html">Volver a la lista</a>
-        </div>
+        
+        <a href="/books.html">
+          <button>&#8592; Volver a la lista</button>
+        </a
+          
       </body>
     </html>`;
 
@@ -107,7 +121,7 @@ export const render = (books: Array<Book>) => {
     <h1>Libros de la API de Open Library</h1>
     <h2>Selecciona un libro para obtener más información</h2>
       
-      <body>
+      <body id="body">
         <div>${renderBooks(books)}</div>
       </body>
     </html>`;
