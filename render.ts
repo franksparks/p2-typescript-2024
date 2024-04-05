@@ -36,13 +36,11 @@ function renderBooks(books: Array<Book>) {
     <a href="/books/${book.edition_key}.html">
       <div class="book hover">
         <img class ="bookCoverMini" src="${
-          book.cover_i ? book.cover_i : "Portada no disponible"
+          book.cover_i ? book.cover_i : "./img/notFound.png"
         }" />
           <div class="bookPreview">
             <h1>${i + 1}. ${book.title}</h1>
-            <h2>${
-              book.author_name ? book.author_name : "Autor no especificado"
-            }</h2>
+            <h2>${book.author_name ? book.author_name : "Autor no especificado"}
           </div>
       </div>
     </a>`;
@@ -66,7 +64,7 @@ async function renderBook(book: Book) {
         <h2>Detalles del libro seleccionado</h2>
         <div class="book">
           <img class ="bookCoverDetails" src="${
-            book.cover_i ? book.cover_i : "Portada no disponible"
+            book.cover_i ? book.cover_i : "../img/notFound.png"
           }" />
           <div class="bookInfo">
             <h1><span class="bold under">Título:</span> ${

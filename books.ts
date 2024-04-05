@@ -1,7 +1,7 @@
 export class Book {
   constructor(
     public author_name: string, //23
-    public cover_i: string, //39
+    public cover_i: string | undefined, //39
     public edition_count: number, //43
     public edition_key: string, //44
     public first_publish_year: number, //151
@@ -49,11 +49,15 @@ export const loadBooks = async (n: number) => {
       : first_sentence;
 
     //Construimos la URL donde obtendremos la portada del libro
-    const cover_url =
-      "https://covers.openlibrary.org/b/id/" + cover_i + "-L.jpg";
+    const cover_url = cover_i
+      ? "https://covers.openlibrary.org/b/id/" + cover_i + "-L.jpg"
+      : undefined;
 
+    //Construimos la URL con el perfil del autor en Open Library
     const author_profile =
       "https://openlibrary.org/authors/" + author_key + "/" + author_name;
+
+    //Construimos la URL con el perfil del libro en Open Library
     const book_profile =
       "https://openlibrary.org/books/" + edition_key + "/" + title;
     books.push(
