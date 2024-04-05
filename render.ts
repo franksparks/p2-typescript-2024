@@ -9,10 +9,16 @@ function generateHead(title: string) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="/img/bookIcon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
         <title>${title}</title>
+        
+
         <style>
         body{
             background-color: #6495ED;
+            font-family: "Special Elite", system-ui;
         }
         a,
         a:visited,
@@ -36,10 +42,10 @@ function generateHead(title: string) {
           background-color: #D3D3D3;
           box-shadow: 0.75em 1.5em;
         }
-        .bookCover{
+        .bookCoverMini{
             width: 5rem;
         }
-        .bookPageCover{
+        .bookCoverDetails{
             width: 10rem;
         }
         .bookPreview{
@@ -77,6 +83,7 @@ function createFolder(bookFolder: string) {
 }
 
 function renderBooks(books: Array<Book>) {
+  createFolder(bookFolder);
   let html = "";
   for (let i = 0; i < books.length; i++) {
     const book = books[i];
@@ -84,7 +91,7 @@ function renderBooks(books: Array<Book>) {
     html += `
     <a href="/books/${book.edition_key}.html">
       <div class="book hover">
-        <img class ="bookCover" src="${
+        <img class ="bookCoverMini" src="${
           book.cover_i ? book.cover_i : "Portada no disponible"
         }" />
           <div class="bookPreview">
@@ -100,52 +107,49 @@ function renderBooks(books: Array<Book>) {
 }
 
 async function renderBook(book: Book) {
-  createFolder(bookFolder);
-
   const html = ` 
     <html>
         ${generateHead(book.title)}
         <body>
         <h1>Detalles del libro seleccionado</h1>
         <div class="bookDetails">
-                <img class ="bookPageCover" src="${
-                  book.cover_i ? book.cover_i : "Portada no disponible"
-                }" />
-                <div class="bookInfo">
-                <h1><span class="bold">Título:</span> ${
-                  book.title ? book.title : "Título no disponible."
-                }</h1>
-                <h2><span class="bold">Autor:</span> ${
-                  book.author_name ? book.author_name : "Autor no especificado"
-                }</h2>
-                <h3><span class="bold">Año de publicación:</span> ${
-                  book.first_publish_year
-                    ? book.first_publish_year
-                    : "Información no disponible."
-                }</h3>
-                <h3><span class="bold">Número de páginas (aprox):</span> ${
-                  book.number_of_pages_median
-                    ? book.number_of_pages_median
-                    : "Información no disponible."
-                }</h3>
-                <h3><span class="bold">Valoración media:</span> ${
-                  book.ratings_average
-                    ? book.ratings_average
-                    : "Información no disponible."
-                }</h3>
-                <h3><span class="bold">Primera frase:</span><span class="italic"> ${
-                  book.first_sentence
-                    ? book.first_sentence
-                    : "Información no disponible."
-                }</span></h3>
-                </div>
-            </div>
-        <div>
-            <a href="/books.html">Volver a la lista</a>
+          <img class ="bookCoverDetails" src="${
+            book.cover_i ? book.cover_i : "Portada no disponible"
+          }" />
+          <div class="bookInfo">
+            <h1><span class="bold">Título:</span> ${
+              book.title ? book.title : "Título no disponible."
+            }</h1>
+            <h2><span class="bold">Autor:</span> ${
+              book.author_name ? book.author_name : "Autor no especificado"
+            }</h2>
+            <h3><span class="bold">Año de publicación:</span> ${
+              book.first_publish_year
+                ? book.first_publish_year
+                : "Información no disponible."
+            }</h3>
+            <h3><span class="bold">Número de páginas (aprox):</span> ${
+              book.number_of_pages_median
+                ? book.number_of_pages_median
+                : "Información no disponible."
+            }</h3>
+            <h3><span class="bold">Valoración media:</span> ${
+              book.ratings_average
+                ? book.ratings_average
+                : "Información no disponible."
+            }</h3>
+            <h3><span class="bold">Primera frase:</span><span class="italic"> ${
+              book.first_sentence
+                ? book.first_sentence
+                : "Información no disponible."
+            }</span></h3>
+          </div>
         </div>
-        
-        </body>
-        </html>`;
+        <div>
+          <a href="/books.html">Volver a la lista</a>
+        </div>
+      </body>
+    </html>`;
 
   const filename = bookFolder + book.edition_key + ".html";
 
