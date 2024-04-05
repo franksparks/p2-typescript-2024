@@ -9,47 +9,12 @@ function generateHead(title: string) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="/img/bookIcon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
         <title>${title}</title>
-        <style>
-        body{
-            background-color: gray
-        }
-        a,
-        a:visited,
-        a:hover,
-        a:active {
-            text-decoration: underline;
-            user-select: none;
-            color: #1e1afb;
-}
-        .book{
-            background-color: white;
-            outline: black 1px solid;
-            margin: 1em;
-            padding: 0.5em;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin: 1em;
+        <link rel="stylesheet" href="../styles.css" />
 
-        }
-        .bookCover{
-            width: 5rem;
-        }
-        .bookPageCover{
-            width: 10rem;
-        }
-        .bookPreview{
-            margin: 1em
-        }
-        .bookInfo{
-            background-color:white;
-            margin: 1em
-        }
-        .bold{
-            font-weight: bold;
-        }
-        </style>
     </head>`;
 }
 
@@ -61,77 +26,106 @@ function createFolder(bookFolder: string) {
 }
 
 function renderBooks(books: Array<Book>) {
-  let html = "";
+  createFolder(bookFolder);
+  let html =
+    "<a href='#body'><button class='upButton'>&#8593;Volver arriba</button></a>";
   for (let i = 0; i < books.length; i++) {
     const book = books[i];
     renderBook(book);
     html += `
-    <div class="book">
-    <img class ="bookCover" src="${
-      book.cover_i ? book.cover_i : "Portada no disponible"
-    }" />
-        <div class="bookPreview">
+    <a href="/books/${book.edition_key}.html">
+      <div class="book hover">
+        <img class ="bookCoverMini" src="${
+          book.cover_i ? book.cover_i : "Portada no disponible"
+        }" />
+          <div class="bookPreview">
             <h1>${i + 1}. ${book.title}</h1>
             <h2>${
               book.author_name ? book.author_name : "Autor no especificado"
             }</h2>
-            <a href="/books/${book.edition_key}.html" 
-            >Más información</a>
-        </div>
-
-        
-  </div>`;
+          </div>
+      </div>
+    </a>`;
   }
+  html += `
+  <a href="https://github.com/franksparks" target="”_blank”">
+    <footer>
+      ©Ferran Bals Moreno 2024
+    </footer>
+  </a>`;
   return html;
 }
 
 async function renderBook(book: Book) {
-  createFolder(bookFolder);
-
   const html = ` 
     <html>
         ${generateHead(book.title)}
+        <main>
         <body>
+        <h1>Libros de la API de Open Library</h1>
+        <h2>Detalles del libro seleccionado</h2>
         <div class="book">
-            
-                <img class ="bookPageCover" src="${
-                  book.cover_i ? book.cover_i : "Portada no disponible"
-                }" />
-                <div class="bookInfo">
-                <p><span class="bold">Título:</span> ${
-                  book.title ? book.title : "Título no disponible."
-                }</p>
-                <p><span class="bold">Autor:</span> ${
-                  book.author_name ? book.author_name : "Autor no especificado"
-                }</p>
-                <p><span class="bold">Año de publicación:</span> ${
-                  book.first_publish_year
-                    ? book.first_publish_year
-                    : "Información no disponible."
-                }</p>
-                <p><span class="bold">Número de páginas (aprox):</span> ${
-                  book.number_of_pages_median
-                    ? book.number_of_pages_median
-                    : "Información no disponible."
-                }</p>
-                <p><span class="bold">Valoración media:</span> ${
-                  book.ratings_average
-                    ? book.ratings_average
-                    : "Información no disponible."
-                }</p>
-                <p><span class="bold">Primera frase:</span> ${
-                  book.first_sentence
-                    ? book.first_sentence
-                    : "Información no disponible."
-                }</p>
-                </div>
-            </div>
-        <div>
-            <a href="/books.html">Volver a la lista</a>
+          <img class ="bookCoverDetails" src="${
+            book.cover_i ? book.cover_i : "Portada no disponible"
+          }" />
+          <div class="bookInfo">
+            <h1><span class="bold under">Título:</span> ${
+              book.title ? book.title : "Título no disponible."
+            }</h1>
+            <h2><span class="bold under">Autor:</span> ${
+              book.author_name ? book.author_name : "Autor no especificado"
+            }</h2>
+            <h3><span class="under">Año de publicación:</span> ${
+              book.first_publish_year
+                ? book.first_publish_year
+                : "Información no disponible."
+            }</h3>
+            <h3><span class="under">Número de páginas (aprox):</span> ${
+              book.number_of_pages_median
+                ? book.number_of_pages_median
+                : "Información no disponible."
+            }</h3>
+            <h3><span class="under">Valoración media:</span> ${
+              book.ratings_average
+                ? book.ratings_average
+                : "Información no disponible."
+            }</h3>
+            <h3><span class="under">Primera frase:</span><span class="italic"> ${
+              book.first_sentence
+                ? book.first_sentence
+                : "Información no disponible."
+            }</span></h3>
+            <h4>
+              <a target="_blank" href="${
+                book.author_profile
+              }"><button class="record">Perfil del autor en Open Library</button></a>
+            </h4>
+            <h4>
+              <a target="_blank" href="${
+                book.book_profile
+              }"><button class="record">Perfil del libro en Open Library</button>
+              </a>
+            </h4>
+          </div>
         </div>
         
-        </body>
-        </html>`;
+        <a href="/books.html">
+          <button>&#8592; Volver a la lista</button>
+        </a
+        </main>
+
+        <a href="https://github.com/franksparks" target="”_blank”">
+          <footer>
+        ©
+        
+          Ferran Bals Moreno
+        2024
+      </footer>
+      </a
+        >
+ 
+      </body>
+    </html>`;
 
   const filename = bookFolder + book.edition_key + ".html";
 
@@ -142,9 +136,11 @@ export const render = (books: Array<Book>) => {
   return `
     <html>
     ${generateHead("Books List")}
+    <h1>Libros de la API de Open Library</h1>
+    <h2>Selecciona un libro para obtener más información</h2>
       
-      <body>
-        <p>${renderBooks(books)}</p>
+      <body id="body">
+        <div>${renderBooks(books)}</div>
       </body>
     </html>`;
 };

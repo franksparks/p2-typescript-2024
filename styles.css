@@ -1,0 +1,102 @@
+body {
+  background-color: #6495ed;
+  font-family: "Special Elite", system-ui;
+}
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  user-select: none;
+  cursor: pointer;
+  color: black;
+}
+.book {
+  background-color: white;
+  outline: black 1px solid;
+  margin: 2em auto;
+  padding: 0.5em;
+  width: 80em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInFromRight 0.5s ease-in-out forwards;
+}
+.bookCoverMini {
+  width: 5rem;
+}
+.bookCoverDetails {
+  width: 15rem;
+}
+.bookPreview {
+  margin: 1em;
+}
+.bookInfo {
+  margin: 1em;
+}
+.hover:hover {
+  background-color: #d3d3d3;
+  box-shadow: 0.75em 1.5em;
+}
+.bold {
+  font-weight: bold;
+}
+.under {
+  text-decoration: underline;
+}
+.italic {
+  font-style: italic;
+}
+h1,
+h2,
+.bookInfo h3 {
+  font-weight: normal;
+}
+button {
+  font-size: 2em;
+  cursor: pointer;
+  background-color: white;
+  font-family: "Special Elite", system-ui;
+}
+button:hover {
+  background-color: #d3d3d3;
+  box-shadow: 0.5em 0.5em;
+}
+.upButton {
+  position: fixed;
+  top: 25em;
+  margin-left: 1em;
+}
+.record {
+  font-size: 1em;
+}
+footer {
+  font-size: 1.5em;
+  outline: 2px black solid;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  padding: 0.5em;
+  position: fixed;
+  bottom: 0.5em;
+}
+
+footer:hover {
+  cursor: pointer;
+  background-color: #d3d3d3;
+  box-shadow: 0.75em 1.5em;
+}
+
+@keyframes fadeInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

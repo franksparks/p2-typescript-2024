@@ -9,7 +9,9 @@ export class Book {
     public key: string, //410
     public number_of_pages_median: number, //452
     public title: "string", //855
-    public ratings_average: number //1167
+    public ratings_average: number, //1167
+    public author_profile: string,
+    public book_profile: string
   ) {}
 }
 
@@ -35,6 +37,7 @@ export const loadBooks = async (n: number) => {
     number_of_pages_median,
     title,
     ratings_average,
+    author_key,
   } of docs) {
     //Almacenamos el primer elemento de los arrays de autores, el id de la edicion y primera frase del libro
     const author = Array.isArray(author_name) ? author_name[0] : author_name;
@@ -49,6 +52,10 @@ export const loadBooks = async (n: number) => {
     const cover_url =
       "https://covers.openlibrary.org/b/id/" + cover_i + "-L.jpg";
 
+    const author_profile =
+      "https://openlibrary.org/authors/" + author_key + "/" + author_name;
+    const book_profile =
+      "https://openlibrary.org/books/" + edition_key + "/" + title;
     books.push(
       new Book(
         author,
@@ -60,7 +67,9 @@ export const loadBooks = async (n: number) => {
         key,
         number_of_pages_median,
         title,
-        ratings_average
+        ratings_average,
+        author_profile,
+        book_profile
       )
     );
     bookCounter++;
