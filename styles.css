@@ -14,7 +14,7 @@ a:active {
 .book {
   background-color: white;
   outline: black 1px solid;
-  margin: 2em auto;
+  margin: 1em auto;
   padding: 0.5em;
   width: 80em;
   display: flex;
@@ -23,6 +23,14 @@ a:active {
   justify-content: center;
   animation: fadeInFromRight 0.5s ease-in-out forwards;
 }
+.mainLink {
+  margin: 0em auto;
+  padding: 0.5em;
+  width: 80em;
+  display: flex;
+  flex-direction: row;
+}
+
 .bookCoverMini {
   width: 5rem;
 }
@@ -48,9 +56,21 @@ a:active {
 .italic {
   font-style: italic;
 }
-h1,
-h2,
-.bookInfo h3 {
+h1 {
+  font-size: 4em;
+}
+h2 {
+  font-size: 2.5em;
+}
+h3 {
+  font-size: 2em;
+}
+h4 {
+  font-size: 1.5em;
+}
+
+.bookInfo h2,
+h3 {
   font-weight: normal;
 }
 button {
@@ -74,7 +94,6 @@ button:hover {
 footer {
   font-size: 1.5em;
   outline: 2px black solid;
-
   display: flex;
   align-items: center;
   justify-content: center;

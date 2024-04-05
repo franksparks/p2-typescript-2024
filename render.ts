@@ -33,14 +33,14 @@ function renderBooks(books: Array<Book>) {
     const book = books[i];
     renderBook(book);
     html += `
-    <a href="/books/${book.edition_key}.html">
-      <div class="book hover">
+    <a class="mainLink" href="/books/${book.edition_key}.html">
+      <div class="book hover back">
         <img class ="bookCoverMini" src="${
           book.cover_i ? book.cover_i : "./img/notFound.png"
         }" />
           <div class="bookPreview">
-            <h1>${i + 1}. ${book.title}</h1>
-            <h2>${book.author_name ? book.author_name : "Autor no especificado"}
+            <h2>${i + 1}. <span class="italic">${book.title}</span></h2>
+            <h3>${book.author_name ? book.author_name : "Autor no especificado"}
           </div>
       </div>
     </a>`;
@@ -67,32 +67,32 @@ async function renderBook(book: Book) {
             book.cover_i ? book.cover_i : "../img/notFound.png"
           }" />
           <div class="bookInfo">
-            <h1><span class="bold under">Título:</span> ${
+            <h2><span class="bold under">Título:</span> <span class="italic">${
               book.title ? book.title : "Título no disponible."
-            }</h1>
-            <h2><span class="bold under">Autor:</span> ${
+            }</span></h2>
+            <h3><span class="bold under">Autor:</span> ${
               book.author_name ? book.author_name : "Autor no especificado"
-            }</h2>
-            <h3><span class="under">Año de publicación:</span> ${
+            }</h3>
+            <h4><span class="under">Año de publicación:</span> ${
               book.first_publish_year
                 ? book.first_publish_year
                 : "Información no disponible."
-            }</h3>
-            <h3><span class="under">Número de páginas (aprox):</span> ${
+            }</h4>
+            <h4><span class="under">Número de páginas (aprox):</span> ${
               book.number_of_pages_median
-                ? book.number_of_pages_median
+                ? book.number_of_pages_median + " páginas."
                 : "Información no disponible."
-            }</h3>
-            <h3><span class="under">Valoración media:</span> ${
+            }</h4>
+            <h4><span class="under">Valoración media:</span> ${
               book.ratings_average
-                ? book.ratings_average
+                ? book.ratings_average.toFixed(2) + "/5"
                 : "Información no disponible."
-            }</h3>
-            <h3><span class="under">Primera frase:</span><span class="italic"> ${
+            }</h4>
+            <h4><span class="under">Primera frase:</span><span class="italic"> ${
               book.first_sentence
                 ? book.first_sentence
                 : "Información no disponible."
-            }</span></h3>
+            }</span></h4>
             <h4>
               <a target="_blank" href="${
                 book.author_profile
@@ -136,6 +136,7 @@ export const render = (books: Array<Book>) => {
     ${generateHead("Books List")}
     <h1>Libros de la API de Open Library</h1>
     <h2>Selecciona un libro para obtener más información</h2>
+    <h3>Criterio de búsqueda: <span class="italic">"Philip K. Dick"</span></h3>
       
       <body id="body">
         <div>${renderBooks(books)}</div>

@@ -17,7 +17,7 @@ export class Book {
 
 export const loadBooks = async (n: number) => {
   const response = await fetch(
-    `https://openlibrary.org/search.json?q=ciencia-ficcion`
+    `https://openlibrary.org/search.json?q=Philip-K.-Dick`
   );
 
   const { docs } = (await response.json()) as { docs: any[] };
