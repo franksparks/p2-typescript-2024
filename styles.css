@@ -21,6 +21,7 @@ a:active {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  animation: fadeInFromRight 0.5s ease-in-out forwards;
 }
 .bookCoverMini {
   width: 5rem;
@@ -87,4 +88,15 @@ footer:hover {
   cursor: pointer;
   background-color: #d3d3d3;
   box-shadow: 0.75em 1.5em;
+}
+
+@keyframes fadeInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
