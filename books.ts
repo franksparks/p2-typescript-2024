@@ -15,9 +15,9 @@ export class Book {
   ) {}
 }
 
-export const loadBooks = async (n: number) => {
+export const loadBooks = async (n: number, criteria: string) => {
   const response = await fetch(
-    `https://openlibrary.org/search.json?q=Philip-K.-Dick`
+    `https://openlibrary.org/search.json?q=${criteria}`
   );
 
   const { docs } = (await response.json()) as { docs: any[] };

@@ -1,4 +1,4 @@
-import { Book } from "./books.js";
+import { Book, loadBooks } from "./books.js";
 import { writeFile } from "fs/promises";
 import fs from "fs";
 
@@ -135,11 +135,24 @@ export const render = (books: Array<Book>) => {
     <html>
     ${generateHead("Books List")}
     <h1>Libros de la API de Open Library</h1>
+    <div class="searchSection">
+      <h3>Introduce criterio de búsqueda:</h3>
+      <input type="text" id="searchBox">
+      <button id="searchButton" onClick="newSearch()">Buscar libros</button>
+    </div>
+    
+    <h3>Criterio de búsqueda: <span class="italic" id="criteria">"Philip K. Dick"</span></h3>
     <h2>Selecciona un libro para obtener más información</h2>
-    <h3>Criterio de búsqueda: <span class="italic">"Philip K. Dick"</span></h3>
       
-      <body id="body">
-        <div>${renderBooks(books)}</div>
-      </body>
+    <body id="body">
+      <div>${renderBooks(books)}</div>
+      <script>
+      function newSearch() {
+        console.log("NEW SEARCH 2");
+      }
+
+      
+      </script>
+    </body>
     </html>`;
 };

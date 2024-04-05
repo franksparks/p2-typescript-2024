@@ -11,6 +11,17 @@ a:active {
   cursor: pointer;
   color: black;
 }
+.searchSection {
+  padding: 1em;
+  outline: 0.25em black solid;
+  display: flex;
+  gap: 4em;
+  align-items: center;
+  justify-content: center;
+}
+#searchBox {
+  font-size: 2em;
+}
 .book {
   background-color: white;
   outline: black 1px solid;
