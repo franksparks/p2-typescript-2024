@@ -53,9 +53,11 @@ export const loadBooks = async (n: number) => {
       ? "https://covers.openlibrary.org/b/id/" + cover_i + "-L.jpg"
       : undefined;
 
+    //Construimos la URL con el perfil del autor en Open Library
     const author_profile =
       "https://openlibrary.org/authors/" + author_key + "/" + author_name;
 
+    //Construimos la URL con el perfil del libro en Open Library
     const book_profile =
       "https://openlibrary.org/books/" + edition_key + "/" + title;
     books.push(
