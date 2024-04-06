@@ -1,6 +1,9 @@
 import { Book } from "./books.js";
 import { writeFile } from "fs/promises";
 import fs from "fs";
+import { criteria } from "./main.js";
+import { main } from "bun";
+const path = require("path");
 
 function generateHead(title: string) {
   return `
@@ -19,14 +22,23 @@ function generateHead(title: string) {
 }
 
 const bookFolder = "./books/";
-function createFolder(bookFolder: string) {
-  if (!fs.existsSync(bookFolder)) {
+// Cada vez que arrancamos la aplicación, comprobamos si la carpeta contenedora de archivos HTML existe.
+// Si existe la vaciamos
+// Si no existe la generamos
+function manageFolder(bookFolder: string) {
+  if (fs.existsSync(bookFolder)) {
+    const files = fs.readdirSync(bookFolder);
+    files.forEach((file) => {
+      const route = path.join(bookFolder, file);
+      fs.unlinkSync(route);
+    });
+  } else {
     fs.mkdirSync(bookFolder);
   }
 }
 
 function renderBooks(books: Array<Book>) {
-  createFolder(bookFolder);
+  manageFolder(bookFolder);
   let html =
     "<a href='#body'><button class='upButton'>&#8593;Volver arriba</button></a>";
   for (let i = 0; i < books.length; i++) {
@@ -136,7 +148,7 @@ export const render = (books: Array<Book>) => {
     ${generateHead("Books List")}
     <h1>Libros de la API de Open Library</h1>
     <h2>Selecciona un libro para obtener más información</h2>
-    <h3>Criterio de búsqueda: <span class="italic">"Philip K. Dick"</span></h3>
+    <h3>Criterio de búsqueda: <span class="italic">"${criteria}"</span></h3>
       
       <body id="body">
         <div>${renderBooks(books)}</div>

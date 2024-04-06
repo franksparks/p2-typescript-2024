@@ -14,11 +14,13 @@ La API que uso para obtener información de libros es la de [Open Library](https
 
 ### Arrancar la aplicación
 
-Una vez abrimos el repositorio en Visual Studio Code, lanzamos ```bun main.ts```, que lanza la petición a la API usando "Philip K. Dick" como criterio de búsqueda y genera las páginas HTML de los 100 primeros resultados. Ahora abrimos el archivo ```books.html``` con Live Server.
+Una vez abrimos el repositorio en Visual Studio Code, lanzamos `bun main.ts`, que lanza la petición a la API usando como criterio de búsqueda el nombre de un escritor elegido aleatoriamente entre los valores de un array proporcionado y genera las páginas HTML de los 100 primeros resultados obtenidos de la API.
+Ahora abrimos el archivo `books.html` con Live Server para acceder a la lista de libros obtenidos.
 
 ### Descripción del contenido
 
-En la página principal, para cada libro se muestra la imagen de portada (si no está disponible se muestra una imagen por defecto), el número de entrada en la lista, el título del libro y el nombre del autor.
+En la parte superior de la página principal se muestra el criterio de búsqueda utilizado.
+Para cada libro se muestra la imagen de portada (si no está disponible se muestra una imagen por defecto), el número de entrada en la lista, el título del libro y el nombre del autor.
 
 Se ha añadido un botón para volver al inicio de la página.
 
@@ -29,7 +31,7 @@ En la página con los detalles de cada libro mostramos los siguientes campos:
 3. Autor
 4. Año de publicación
 5. Número medio de páginas
-6. Valoración media por los usuarios de la plataforma
+6. Valoración media por los usuarios de la plataforma Open Library
 7. Primera frase del libro
 8. Enlace al perfil del autor en Open Library
 9. Enlace al perfil del libro en Open Library
