@@ -87,6 +87,7 @@ button:hover {
   position: fixed;
   top: 25em;
   margin-left: 1em;
+  z-index: 999;
 }
 .record {
   font-size: 1em;
