@@ -14,7 +14,10 @@ La API que uso para obtener información de libros es la de [Open Library](https
 
 ### Arrancar la aplicación
 
-Una vez abrimos el repositorio en Visual Studio Code, lanzamos `bun main.ts`, que lanza la petición a la API usando como criterio de búsqueda el nombre de un escritor elegido aleatoriamente entre los valores de un array proporcionado y genera las páginas HTML de los 100 primeros resultados obtenidos de la API.
+Una vez abrimos el repositorio en Visual Studio Code, lanzamos `bun main.ts`, que lanza la petición a la API usando como criterio de búsqueda el nombre de un escritor elegido aleatoriamente entre los valores de un array proporcionado y genera tanto la páginas HTML de la lista como las páginas HTML de los 100 primeros resultados obtenidos de la API.
+
+Lanzando de nuevo `bun main.ts`, se utiliza como criterio de búsqueda otro de los escritores del array, con lo que se genera de nuevo la página de la lista. En caso de existir el directorio con las páginas HTML de cada libro del primer escritor, borraremos primero el directorio y luego generaremos las páginas de los libros del escritor seleccionado actualmente.
+
 Ahora abrimos el archivo `books.html` con Live Server para acceder a la lista de libros obtenidos.
 
 ### Descripción del contenido
